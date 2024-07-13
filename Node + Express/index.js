@@ -25,7 +25,7 @@ server.listen(3000, '127.0.0.1')
 console.log("Listening to port 3000") */
 
 /* MIT EXPRESS: 
------------------------------------------*/
+-----------------------------------------
 //starten im Terminal mit nodemon index.js
 //https://www.youtube.com/watch?v=9TSBKO59u0Y&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=23
 var express = require("express");
@@ -37,6 +37,27 @@ app.get("/", function(req, res){ //Express erweitert diese req, res Objekte und 
 });
 app.get("/contact", function(req, res){ //Express erweitert diese req, res Objekte und fügt zusätzliche Funktionen hinzu
     res.send("<h1>This is the Contact Page</h1>") //Content-Type und Header muss nicht länger angegeben werden. Express erkennt dies automatisch
+})
+
+app.listen(3000)
+*/
+
+/* ROUTE PARAMETERS (dynamische Routen): 
+-----------------------------------------*/
+var express = require("express");
+var app = express();
+
+//Routen
+app.get("/", function(req, res){ //Express erweitert diese req, res Objekte und fügt zusätzliche Funktionen hinzu
+    res.send("<h1>This is the Homepage</h1>") //Content-Type und Header muss nicht länger angegeben werden. Express erkennt dies automatisch
+});
+
+app.get("/contact", function(req, res){ //Express erweitert diese req, res Objekte und fügt zusätzliche Funktionen hinzu
+    res.send("<h1>This is the Contact Page</h1>") //Content-Type und Header muss nicht länger angegeben werden. Express erkennt dies automatisch
+});
+
+app.get("/user/:id", function(req, res){
+    res.send("You requested to see a User with the ID of: " + req.params.id)
 })
 
 app.listen(3000)

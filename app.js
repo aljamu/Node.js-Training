@@ -101,7 +101,7 @@ ryan.emit('speak', '"Ha Ha Ha"')
 */
 
 /*READ AND WRITE FILES WITH fs:
----------------------------------------*/
+---------------------------------------
 var fs = require("fs");
 
 fs.readFile("fs_readMe.txt", "utf8", function(err, data){
@@ -110,3 +110,19 @@ fs.readFile("fs_readMe.txt", "utf8", function(err, data){
 }); //Asynchron: läuft "parallel" zum Code
 
 console.log("Obwohl dieses console.log später/weiter unten im Code steht, wird es trotzdem DAVOR gelogged (weil, vereinfacht gesagt, der Code davor eine asynchrone Funktion aufruft)")
+*/
+
+/*CREATE AND DELETE:
+---------------------------------------*/
+var fs = require("fs");
+
+fs.unlink("fs_writeMe.txt", (err)=>{ }); //Datei löschen
+
+fs.mkdirSync("newDirectory")
+fs.mkdir("newAsyncDirectory", function(){
+    fs.readFile("fs_readMe.txt", "utf8", function(err, data){
+        fs.writeFile("./newAsyncDirectory/fs_writeMeInNewDir.txt", data, (err)=>{ })
+    })
+}) 
+
+//fs.rmdirSync(". . .") Directory löschen

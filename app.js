@@ -51,6 +51,15 @@ callFunction(sayBye);
 */
 
 /*MODULES:
----------------------------------------*/
-var arrayCounter = require("./arrayCountModule"); //required Module
+---------------------------------------
+var arrayCounter = require("./arrayCountModule"); //required Module in Variable hinterlegt, denn in arrayCountModule wird ja das "Ergebnis" der Funktion durch module.exports "übergeben"
 console.log(arrayCounter(['Cod', 'Shellfish', 'Salmon']));
+*/
+
+/*MODULE PATTERNS:
+---------------------------------------*/
+var zeugsAusModuleExportObjekt = require("./modulePatterns"); //Objekt mit module.exports.ObjectProperties in Variable gespeichert
+
+console.log(zeugsAusModuleExportObjekt.adder(3,5))
+console.log(zeugsAusModuleExportObjekt.subtract(11, 4))
+console.log(zeugsAusModuleExportObjekt.adder(zeugsAusModuleExportObjekt.pi, 3))

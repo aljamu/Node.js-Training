@@ -113,7 +113,7 @@ console.log("Obwohl dieses console.log später/weiter unten im Code steht, wird 
 */
 
 /*CREATE AND DELETE:
----------------------------------------*/
+---------------------------------------
 var fs = require("fs");
 
 fs.unlink("fs_writeMe.txt", (err)=>{ }); //Datei löschen
@@ -126,3 +126,17 @@ fs.mkdir("newAsyncDirectory", function(){
 }) 
 
 //fs.rmdirSync(". . .") Directory löschen
+*/
+
+/*SERVER ERSTELLEN:
+---------------------------------------*/
+var http = require("http");
+
+var server = http.createServer(function(req, res){ //req, res sind Objekte
+    console.log(`Request was made: ${req.url}`)
+    res.writeHead(200, {'Content-Type': 'text/plain'})
+    res.end('Hello World')
+})
+
+server.listen(3000, '127.0.0.1'); //Node wird angewiesen, auf Port 3000 im Localhost zu hören
+console.log("Listening to port 3000") //Feedback als Info

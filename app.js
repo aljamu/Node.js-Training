@@ -57,9 +57,44 @@ console.log(arrayCounter(['Cod', 'Shellfish', 'Salmon']));
 */
 
 /*MODULE PATTERNS:
----------------------------------------*/
+---------------------------------------
 var zeugsAusModuleExportObjekt = require("./modulePatterns"); //Objekt mit module.exports.ObjectProperties in Variable gespeichert
 
 console.log(zeugsAusModuleExportObjekt.adder(3,5))
 console.log(zeugsAusModuleExportObjekt.subtract(11, 4))
 console.log(zeugsAusModuleExportObjekt.adder(zeugsAusModuleExportObjekt.pi, 3))
+*/
+
+/*EVENT MODULE:
+---------------------------------------*/
+var events = require("events");
+var util = require("util");
+
+//In normalem JavaScript: element.on('click', function(){})
+
+var myEmitter = new events.EventEmitter();
+myEmitter.on('someEvent', function(msg){
+    console.log(msg);
+});
+myEmitter.emit('someEvent', "The event was emitted")
+
+var person = function(name){
+    this.name = name;
+};
+
+util.inherits(person, events.EventEmitter)
+
+var james = new person("James");
+var mary = new person("Mary");
+var ryan = new person("Ryan");
+var people = [james, mary, ryan];
+
+people.forEach(function(person){
+    person.on('speak', function(msg){
+        console.log(person.name + ' said: ' + msg )
+    })
+})
+
+james.emit('speak', '"Hey dudes"')
+mary.emit('speak', '"I am a Dudette!?"')
+ryan.emit('speak', '"Ha Ha Ha"')

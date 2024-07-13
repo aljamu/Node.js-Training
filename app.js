@@ -65,8 +65,8 @@ console.log(zeugsAusModuleExportObjekt.subtract(11, 4))
 console.log(zeugsAusModuleExportObjekt.adder(zeugsAusModuleExportObjekt.pi, 3))
 */
 
-/*EVENT MODULE:
----------------------------------------*/
+/*EVENTS WITH EVENT MODULE:
+---------------------------------------
 var events = require("events");
 var util = require("util");
 
@@ -98,3 +98,15 @@ people.forEach(function(person){
 james.emit('speak', '"Hey dudes"')
 mary.emit('speak', '"I am a Dudette!?"')
 ryan.emit('speak', '"Ha Ha Ha"')
+*/
+
+/*READ AND WRITE FILES WITH fs:
+---------------------------------------*/
+var fs = require("fs");
+
+fs.readFile("fs_readMe.txt", "utf8", function(err, data){
+    console.log(data);
+    fs.writeFile("fs_writeMeAsync.txt", data, (err)=>{ })
+}); //Asynchron: läuft "parallel" zum Code
+
+console.log("Obwohl dieses console.log später/weiter unten im Code steht, wird es trotzdem DAVOR gelogged (weil, vereinfacht gesagt, der Code davor eine asynchrone Funktion aufruft)")

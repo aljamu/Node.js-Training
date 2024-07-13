@@ -27,7 +27,7 @@ var timer = setInterval(function(){
 */
 
 /*FUNCTION EXPRESSIONS:
----------------------------------------*/
+---------------------------------------
 //Funktionen im normalen Javascript:
 function sayHi(){
 console.log("Hi");
@@ -48,3 +48,9 @@ function callFunction(anotherFunction){ // Funktion als Parameter
 
 callFunction(sayBye);
 //callFunktion(sayHi()); Funktioniert NICHT!
+*/
+
+/*MODULES:
+---------------------------------------*/
+var arrayCounter = require("./arrayCountModule"); //required Module
+console.log(arrayCounter(['Cod', 'Shellfish', 'Salmon']));
